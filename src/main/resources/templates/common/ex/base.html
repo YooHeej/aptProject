@@ -15,7 +15,7 @@
 			a { text-decoration: none; }
 			.disabled-link { pointer-events: none; }
 		</style>
-		<script src="#"></script>
+		<script src="/abbs/js/aside.js?v=3"></script>
 	</header>
 </head>
 <body>
@@ -28,7 +28,10 @@
 							<a class="nav-link"  href="#">
 								<div style="display: flex; flex-direction: column; align-items: center;">
 									<div>
-										<img src="/apt/img/home.png" height="70">
+										<i class="fa-solid fa-building fa-2x"></i>
+								</div>
+									<div>
+										<span>홈</span>
 									</div>
 								</div>
 							</a>
@@ -37,18 +40,20 @@
 					<ul class="navbar-nav ms-auto">
 						<li class="nav-item ms-3">
 							<span th:if="${session.sessUid}">
-								<a class="nav-link" href="#"><i class="fa-solid fa-circle-info"></i> 회원 정보</a>
+								<a class="nav-link" href="#"><i class="fa-solid fa-bookmark"></i> 관심</a>
 							</span>
 						</li>
+					</ul>
+					<ul class="navbar-nav ms-auto">
 						<li class="nav-item ms-3">
 							<span th:if="${session.sessUid}">
-								<a class="nav-link" href="/apt/#"><i class="fas fa-sign-out-alt"></i> 로그아웃</a>
+								<a class="nav-link" href="/apt/user/logout"><i class="fas fa-sign-out-alt"></i> 로그아웃</a>
 							</span>
 							<span th:unless="${session.sessUid}">
 								<a class="nav-link" href="/apt/user/login"><i class="fas fa-sign-in-alt"></i> 로그인</a>
 							</span>
 						</li>
-						<li class="nav-item ms-3">
+					</ul>
 							<span th:if="${session.sessUid}">
 								<span class="navbar-text me-3">[[${session.sessUname}]]님 환영합니다.</span>
 							</span>
@@ -57,11 +62,11 @@
 							</span>
 						</li>
 					</ul>
+
 				</div>
 			</nav>
 		</header>
 	</div>
-
 
 	<footer th:fragment="bottom">
 		<nav class="navbar navbar-expand-sm fixed-bottom" style="background-color:khaki" >
