@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<header th:fragment="head">
+		<title>Apt</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="https://kit.fontawesome.com/fdb840a8cc.js" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+		<style>
+			* { font-family: 'Noto Sans KR', sans-serif; }
+			a { text-decoration: none; }
+			.disabled-link { pointer-events: none; }
+
+			.container {
+				width: 1600px;
+				height: 900px;
+				text-align: center;
+				position: relative;
+				z-index: 1;
+			}
+			.container::after {
+				width: 1600px;
+				height: 900px;
+				content: "";
+				background: url("img/a.jpg");
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: -1;
+				opacity: 0.3;
+			}
+
+		</style>
+		<script src="#"></script>
+	</header>
+</head>
+<body>
+	<div th:fragment="top">
+		<header id="header">
+			<nav class="navbar navbar-expand-sm fixed-top" style="background-color:khaki" >
+				<div class="container-fluid">
+					<ul class="navbar-nav">
+						<li class="nav-item ms-3">
+							<a class="nav-link"  href="#">
+								<div style="display: flex; flex-direction: column; align-items: center;">
+									<div>
+										<img src="img/home.png" height="70">
+									</div>
+								</div>
+							</a>
+						</li>
+					</ul>
+					<ul class="navbar-nav ms-auto">
+						<li class="nav-item ms-3">
+							<span th:if="${session.sessUid}">
+								<a class="nav-link" href="#"><i class="fa-solid fa-circle-info"></i> 회원 정보</a>
+							</span>
+						</li>
+						<li class="nav-item ms-3">
+							<span th:if="${session.sessUid}">
+								<a class="nav-link" href="/apt/#"><i class="fas fa-sign-out-alt"></i> 로그아웃</a>
+							</span>
+							<span th:unless="${session.sessUid}">
+								<a class="nav-link" href="/apt/user/login"><i class="fas fa-sign-in-alt"></i> 로그인</a>
+							</span>
+						</li>
+						<li class="nav-item ms-3">
+							<span th:if="${session.sessUid}">
+								<span class="navbar-text me-3">[[${session.sessUname}]]님 환영합니다.</span>
+							</span>
+							<span th:unless="${session.sessUid}">
+								<a class="nav-link" href="#"><i class="fa-solid fa-circle-user"></i> 회원 가입</a>
+							</span>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+	</div>
+	<div class="container">
+	</div>
+
+
+	<footer th:fragment="bottom">
+		<nav class="navbar navbar-expand-sm fixed-bottom" style="background-color:khaki" >
+			<div class="container-fluid justify-content-center">
+				<span class="navbar-text">
+					Copyright &copy; .
+				</span>
+			</div>
+		</nav>
+	</footer>
+</body>
+</html>
